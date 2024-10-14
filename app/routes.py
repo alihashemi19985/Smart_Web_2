@@ -40,6 +40,12 @@ def history():
     
     return render_template("history.html")
 
+@bp.route("/error", methods=["GET"])
+def error():
+    
+    return render_template("error.html")
+
+
 @bp.route("/logout")
 def logout():
     session.pop("username",None)
