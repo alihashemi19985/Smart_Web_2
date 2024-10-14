@@ -608,9 +608,9 @@ h6 {
 	color: var(--accent-color);
 }
 
-.footer .footer-contact p {
+/* .footer .footer-contact p {
 	margin-bottom: 5px;
-}
+} */
 
 .footer .footer-newsletter .newsletter-form {
 	margin-top: 30px;
@@ -2009,3 +2009,6 @@ section,
 	background: color-mix(in srgb, var(--accent-color), transparent 20%);
 	padding-right: 19px;
 }
+.result {
+	min-height: 80vh;
+  }
