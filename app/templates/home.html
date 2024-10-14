@@ -37,6 +37,63 @@
 	</div>
 </section>
 <!-- /Hero Section -->
+<!-- About Section -->
+<section
+	id="about"
+	class="about section">
+	<div class="container">
+		<div class="row gy-4">
+			<div
+				class="col-lg-6 content"
+				data-aos="fade-up"
+				data-aos-delay="100">
+				<p class="who-we-are">What is this website about?</p>
+				<p
+					class="fst-italic"
+					style="text-align: justify">
+					Welcome to the Titanic Survival Prediction website! This platform uses
+					machine learning to predict the likelihood of survival for passengers
+					aboard the infamous Titanic. By analyzing historical data from the
+					Titanic's passenger manifest, including variables such as age, gender,
+					class, and more, we can provide predictions based on patterns observed
+					in the dataset. Whether you're a data enthusiast or just curious about
+					the science behind predictive modeling, this website offers a
+					practical example of how machine learning algorithms, like logistic
+					regression, can be applied to historical data for insightful results.
+					Explore the model and see how factors influenced survival chances
+					aboard one of history’s most famous ships!
+				</p>
+				<br />
+				<a
+					href="#"
+					class="read-more"
+					><span>Try it!</span><i class="bi bi-arrow-right"></i
+				></a>
+			</div>
+
+			<div
+				class="col-lg-6 about-images"
+				data-aos="fade-up"
+				data-aos-delay="200">
+				<div class="row gy-4">
+					<div class="col-lg-12">
+						<img
+							src="{{url_for('static',filename='img/about1.jpg')}}"
+							class="img-fluid"
+							alt="" />
+					</div>
+					<div class="col-lg-12">
+						<img
+							src="{{url_for('static',filename='img/about2.jpg')}}"
+							class="img-fluid"
+							alt="" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /About Section -->
 <!-- Features Section -->
 <section
 	id="features"
@@ -133,7 +190,7 @@
 							class="nav-link active show"
 							data-bs-toggle="tab"
 							data-bs-target="#features-tab-1">
-							<i class="fas fa-exclamation-triangle"></i>
+							<i class="custom-icon icon-iceberg"></i>
 							<div>
 								<p style="text-align: justify">
 									On the night of April 14, 1912, the Titanic struck an iceberg
@@ -170,7 +227,7 @@
 							class="nav-link active show"
 							data-bs-toggle="tab"
 							data-bs-target="#features-tab-1">
-							<i class="bi bi-binoculars"></i>
+							<i class="custom-icon icon-sank"></i>
 							<div>
 								<p style="text-align: justify">
 									The sinking of the Titanic became a symbol of human error,
@@ -209,80 +266,60 @@
 	</div>
 </section>
 <!-- /Features Section -->
-
 <section
-	id="featured-services"
-	class="featured-services section light-background">
-	<div class="container">
+	id="contact"
+	class="contact section">
+	<!-- Section Title -->
+	<div
+		class="container section-title"
+		data-aos="fade-up">
+		<h2>Contact</h2>
+		<p>Contact us through the following ways</p>
+	</div>
+	<!-- End Section Title -->
+
+	<div
+		class="container"
+		data-aos="fade-up"
+		data-aos-delay="100">
 		<div class="row gy-4">
-			<div
-				class="col-xl-4 col-lg-6"
-				data-aos="fade-up"
-				data-aos-delay="100">
-				<div class="service-item d-flex">
-					<div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
-					<div>
-						<h4 class="title">
-							<a
-								href="#"
-								class="stretched-link"
-								>Lorem Ipsum</a
-							>
-						</h4>
-						<p class="description">
-							Voluptatum deleniti atque corrupti quos dolores et quas molestias
-							excepturi
-						</p>
-					</div>
+			<div class="col-lg-6">
+				<div
+					class="info-item d-flex flex-column justify-content-center align-items-center"
+					data-aos="fade-up"
+					data-aos-delay="200">
+					<i class="bi bi-geo-alt"></i>
+					<h3>Address</h3>
+					<p>A108 Adam Street, New York, NY 535022</p>
 				</div>
 			</div>
-			<!-- End Service Item -->
+			<!-- End Info Item -->
 
-			<div
-				class="col-xl-4 col-lg-6"
-				data-aos="fade-up"
-				data-aos-delay="200">
-				<div class="service-item d-flex">
-					<div class="icon flex-shrink-0">
-						<i class="bi bi-card-checklist"></i>
-					</div>
-					<div>
-						<h4 class="title">
-							<a
-								href="#"
-								class="stretched-link"
-								>Dolor Sitema</a
-							>
-						</h4>
-					</div>
+			<div class="col-lg-3 col-md-6">
+				<div
+					class="info-item d-flex flex-column justify-content-center align-items-center"
+					data-aos="fade-up"
+					data-aos-delay="300">
+					<i class="bi bi-telephone"></i>
+					<h3>Call Us</h3>
+					<p>info@filoger.com</p>
 				</div>
 			</div>
-			<!-- End Service Item -->
+			<!-- End Info Item -->
 
-			<div
-				class="col-xl-4 col-lg-6"
-				data-aos="fade-up"
-				data-aos-delay="300">
-				<div class="service-item d-flex">
-					<div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
-					<div>
-						<h4 class="title">
-							<a
-								href="#"
-								class="stretched-link"
-								>Sed ut perspiciatis</a
-							>
-						</h4>
-						<p class="description">
-							Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum
-						</p>
-					</div>
+			<div class="col-lg-3 col-md-6">
+				<div
+					class="info-item d-flex flex-column justify-content-center align-items-center"
+					data-aos="fade-up"
+					data-aos-delay="400">
+					<i class="bi bi-envelope"></i>
+					<h3>Email Us</h3>
+					<p>info@filoger.com</p>
 				</div>
 			</div>
-			<!-- End Service Item -->
+			<!-- End Info Item -->
 		</div>
 	</div>
 </section>
-<!-- /Featured Services Section -->
+<!-- /Contact Section -->
 {% endblock %}
