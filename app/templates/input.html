@@ -13,68 +13,55 @@
 		class="container"
 		data-aos="fade-up">
 		<div class="row d-flex justify-content-center align-items-start">
+			{% with  messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+			<div>
+				{% for category, message in messages %}
+					<div class="alert alert-{{category}} alert-dismissiable fade show" role="alert">
+						{{message}}
+					</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+			{% endwith %}
 			<h2 class="section-title">Enter your Data</h2>
 
+			<form action = {{url_for('main.input_data')}} method ="POST" novalidate></form>
 			<div class="col-lg-3">
-				<form>
-					<div class="mb-3">
-						<label
-							for="feature1"
-							class="form-label"
-							>feature 1</label
-						>
-						<input
-							type="text"
-							class="form-control"
-							id="feature1"
-							placeholder="Enter feature 1" />
+					<div class="form-group">
+						{{ form.Pclass.label(class="form-label") }} 
+						{{ form.Pclass(class="form-control") }} 
+						{% for error in form.Pclass.errors %}
+							<span class="text-danger small">{{ error }}</span>
+						{% endfor %}
 					</div>
-					<div class="mb-3">
-						<label
-							for="feature2"
-							class="form-label"
-							>feature 2</label
-						>
-						<input
-							type="text"
-							class="form-control"
-							id="feature2"
-							placeholder="Enter feature 2" />
-                    </div>
-                </div>
-                <div class="col-lg-3">
+					<div class = "form-group">
+						{{form.sex.label(class="form-label")}}
+						{{form.sex(class="form-control")}}
+						{% for error in form.sex.errors %}
+							<span class ="text-danger small">{{error}}</span>
+						{% endfor %}
+					</div>
+            </div>
+            <div class="col-lg-3">
 
-                    <div class="mb-3">
-                        <label
-                        for="feature3"
-                        class="form-label"
-                        >feature 3</label
-						>
-						<input
-                        type="text"
-                        class="form-control"
-                        id="feature3"
-                        placeholder="Enter feature 3" />
-                    </div>
-                    <div class="mb-3">
-                        <label
-                        for="feature4"
-                        class="form-label"
-                        >feature 4</label
-						>
-						<input
-                        type="text"
-                        class="form-control"
-                        id="feature4"
-                        placeholder="Enter featur 4" />
-                    </div>
-                </div>
+				<div class = "form-group">
+					{{form.age.label(class="form-label")}}
+					{{form.age(class="form-control")}}
+					{% for error in form.age.errors %}
+						<span class ="text-danger small">{{error}}</span>
+					{% endfor %}
+				</div>
+				<div class = "form-group">
+					{{form.embarked.label(class="form-label")}}
+					{{form.embarked(class="form-control")}}
+					{% for error in form.embarked.errors %}
+						<span class ="text-danger small">{{error}}</span>
+					{% endfor %}
+				</div>
+            </div>
 					<div class="d-flex justify-content-center p-3">
-						<button
-							type="submit"
-							class="submit-btn">
-							Predict
-						</button>
+						{{form.predict(class='submit-btn')}}
 					</div>
 					<div class="text-center">
 						<p>
