@@ -84,19 +84,41 @@
 								>Home</a
 							>
 						</li>
-						<li><a href="{{ url_for('main.home') }}#about">About</a></li>
+						<li><a href="{{ url_for('main.input_data') }}">Input</a></li>
 
-						<li><a href="{{ url_for('main.home') }}#features">History</a></li>
+						<li><a href="{{ url_for('main.history') }}">History</a></li>
 						<li><a href="{{ url_for('main.home') }}#contact">Contact</a></li>
 					</ul>
 					<i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
 				</nav>
 
-				<a
-					class="btn-getstarted"
-					href="{{url_for('main.login')}}"
-					>Get Started</a
-				>
+				<!-- {% if session %}
+							<pre>{{ session }}</pre>
+							{% endif %} {% if 'username' in session %} -->
+							<!-- User is logged in, show the logout button -->
+					<a
+						class="btn-getstarted"
+						href="{{ url_for('main.logout') }}"
+						>Logout</a
+					>
+					<a
+						class="btn-getstarted"
+						href="{{ url_for('main.history') }}"
+						>History</a
+					>
+				{% else %}
+					<!-- User is not logged in, show the login and register buttons -->
+					<a
+						class="btn-getstarted"
+						href="{{url_for('main.login')}}"
+						>Log In</a
+					>
+					<a
+						class="btn-getstarted"
+						href="{{url_for('main.register')}}"
+						>Register</a
+					>
+				{% endif %}
 			</div>
 		</header>
 		<main>{% block content %}{% endblock %}</main>

@@ -1,59 +1,39 @@
-{%extends "base.html" %} {% block title %} History {% endblock %} {% block
+{%extends "base.html" %} {% block title %} Result {% endblock %} {% block
 	content %}
 <section
 	id="login"
-	class="hero login section">
+	class="hero result section">
 	<!-- Section Title -->
 	<div class="login-bg">
 		<img
-			src="{{url_for('static',filename='img/login_bg.jpg')}}"
+			src="{{url_for('static',filename='img/input.jpg')}}"
 			alt="" />
 	</div>
 	<div
-		class="container "
+		class="container"
 		data-aos="fade-up">
-		<div class="row d-flex flex-column align-items-end p-3">
-			<div class="col-lg-6 section-title text-center">
-				<h2>Sign In</h2>
-			</div>
-
-			<div class="col-lg-6">
-				<form>
-					<div class="mb-3 ">
-						<label
-							for="username"
-							class="form-label"
-							>Username</label
-						>
-						<input
-							type="text"
-							class="form-control"
-							id="username"
-							placeholder="Enter username" />
-					</div>
-					<div class="mb-3">
-						<label
-							for="password"
-							class="form-label"
-							>Password</label
-						>
-						<input
-							type="password"
-							class="form-control"
-							id="password"
-							placeholder="Enter password" />
-					</div>
-					<div class="d-flex justify-content-center p-3">
-                        <button type="submit" class="submit-btn">Submit</button>
-                    </div>
-                    <div class="text-center">
-                        <p>Don't have an account? <a href="{{url_for('main.register')}}">Sign up here</a></p>
-                    </div>
-				</form>
+		<div class="row d-flex justify-content-center align-items-start">
+			<div class="col-lg-6 ">
+				<h4 class="section-title text-center">Predicted result</h4>
+				<p class="text-center">
+					The predicted result is:
+					<!-- put prediction result here with jinja -->
+					<strong>{{predicted_class}}</strong>
+				</p>
+				<!-- add explanation with jinja-->
+				<p class="text-center">
+					According to our data and prediction, you survived the Titanic.
+				</p>
+				<div class="text-center">
+					<a
+						href="{{url_for('main.input_data')}}"
+						class="btn-get-started"
+						>Predict Again</a
+					>
+				</div>
 			</div>
 		</div>
 	</div>
-	
 </section>
 <!-- /Starter Section Section -->
 {%endblock%}
