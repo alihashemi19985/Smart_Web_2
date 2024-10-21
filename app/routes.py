@@ -95,7 +95,7 @@ def input_data():
         )
         db.session.add(new_input)
         db.session.commit()
-        return render_template('result.html' , predicted_class = predicted_class)
+        return render_template("result.html" , predicted_class = predicted_class)
        
     return render_template("input.html", form = form)
 

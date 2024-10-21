@@ -26,7 +26,8 @@
 			{% endwith %}
 			<h2 class="section-title">Enter your Data</h2>
 
-			<form action = {{url_for('main.input_data')}} method ="POST" novalidate></form>
+			<form action = "{{url_for('main.input_data')}}" method ="POST" novalidate>
+			{{ form.hidden_tag() }}
 			<div class="col-lg-3">
 					<div class="form-group">
 						{{ form.Pclass.label(class="form-label") }} 
