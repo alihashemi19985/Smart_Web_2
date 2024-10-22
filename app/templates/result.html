@@ -18,11 +18,24 @@
 				<p class="text-center">
 					The predicted result is:
 					<!-- put prediction result here with jinja -->
-					<strong>{{predicted_class}}</strong>
+					<strong>{% if predicted_class == 0 %}
+						Not Survived
+					{% elif predicted_class == 1 %}
+						Survived
+					{% else %}
+						Unknown
+					{% endif %}</strong>
 				</p>
 				<!-- add explanation with jinja-->
 				<p class="text-center">
-					According to our data and prediction, you survived the Titanic.
+					{% if predicated_class == 1%}
+					According to our data and prediction, you would have survived the Titanic disaster.
+					{% elif predicted_class == 0 %}
+					According to our data and prediction, you wouldn't have survived the Titanic disaster.
+					{% else %}
+					We encountered an error while predicting your survival status. Please try again later.
+					{% endif %}
+
 				</p>
 				<div class="text-center">
 					<a
