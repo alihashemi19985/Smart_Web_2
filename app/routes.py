@@ -7,10 +7,11 @@ from flask import (
     session,
     request,
 )
+import numpy as np 
 from flask_bcrypt import Bcrypt
 from .database import User, db, Prediction, bcrypt
 from .forms import RegistrationForm, LoginForm, InputForm
-from  .model.model import prediction
+from  .model.model import prediction_model
 
 bp = Blueprint("main", __name__)
 # bcrypt = Bcrypt()
@@ -82,8 +83,14 @@ def input_data():
         age= form.age.data
         embarked= form.embarked.data
     
-        features = [Pclass, sex, age, embarked]
-        predicted_class = prediction(features)  ##machine learning model
+        features = [
+            float(request.form['Pclass']),
+            request.form['sex'],
+            float(request.form['age']),
+            request.form['embarked']
+        ]
+
+        predicted_class = prediction_model(features)  ##machine learning model
         user_check = User.query.filter_by(username =session['username']).first()
         new_input = Prediction(
             user_id= user_check.id,
@@ -91,7 +98,7 @@ def input_data():
             sex= sex,
             age= age,
             embarked = embarked,
-            result = predicted_class
+            prediction_result = predicted_class
         )
         db.session.add(new_input)
         db.session.commit()
