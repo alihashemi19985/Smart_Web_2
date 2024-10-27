@@ -27,6 +27,7 @@ def register():
     if request.method == 'POST' and form.validate_on_submit():
         username = form.username.data
         password = form.password.data
+        email = form.email.data
 
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
@@ -34,7 +35,7 @@ def register():
             return redirect(url_for("main.login"))
         
         hashed_password = bcrypt.generate_password_hash(password).decode('utf8')
-        new_user = User(username=username, password=hashed_password)
+        new_user = User(username=username, email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
         flash('Register Successfull')
