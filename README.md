@@ -13,4 +13,4 @@ This project is about predicting the survival of passengers on the Titanic using
 
 - Run the app using `python run.py`
 
-- Open the browser and go to `localhost:5000` to view the app
+- Open the browser and go to `localhost:8000` to view the app
