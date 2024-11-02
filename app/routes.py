@@ -78,28 +78,34 @@ def login_required(f):
 def input_data():
     form=InputForm()
 
-    if request.method == 'POST' and form.validate_on_submit():
-        Pclass= form.Pclass.data
-        sex = form.sex.data
-        age= form.age.data
-        embarked= form.embarked.data
-    
+    if request.method == 'POST':
+        sex = request.form.get("sex")
+        age = request.form.get("age")
+        pclass = request.form.get("pclass")
+        embarked = request.form.get("embarked")
+
+        if not sex or not age or not pclass or not embarked:
+            flash("Missing data! Please fill out all fields.", "warning")
+            return render_template("error.html",error = 400), 400  # Return custom error page with 400 status code
+        
         features = [
-            float(request.form['Pclass']),
+            float(request.form['pclass']),
             request.form['sex'],
             float(request.form['age']),
             request.form['embarked']
         ]
 
         predicted_class = prediction_model(features)  ##machine learning model
+        predict_result = 'Survived' if predicted_class == 1 else 'Not Survived'
+
         user_check = User.query.filter_by(username =session['username']).first()
         new_input = Prediction(
             user_id= user_check.id,
-            Pclass = Pclass,
+            Pclass = pclass,
             sex= sex,
             age= age,
             embarked = embarked,
-            prediction_result = predicted_class
+            prediction_result = predict_result
         )
         db.session.add(new_input)
         db.session.commit()
@@ -112,14 +118,41 @@ def input_data():
 def history():
     current_user = User.query.filter_by(username=session["username"]).first()
     predictions = Prediction.query.filter_by(user_id=current_user.id).all()
-
+    # print(predictions[1].sex)
     return render_template("history.html", predictions=predictions)
+
+@bp.route("/profile", methods=["GET"])
+@login_required
+def profile():
+    current_user = User.query.filter_by(username=session["username"]).first()
+    # predictions = Prediction.query.filter_by(user_id=current_user.id).all()
+    # print(current_user.email)
+    return render_template("profile.html", user_info=current_user)
     
 
 @bp.route("/error", methods=["GET"])
 def error():
-    
-    return render_template("error.html")
+
+    return render_template("error.html",error=500)
+
+
+@bp.app_errorhandler(401)
+def unauthorized_error(e):
+    flash("You need to be logged in to access this page.", "warning")
+    # return redirect(url_for("main.login"))
+    return render_template("error.html",error=401), 401
+
+
+@bp.app_errorhandler(404)
+def page_not_found(e):
+    return render_template("error.html",error=404), 404
+
+@bp.app_errorhandler(500)
+def internal_server_error(e):
+    # Log the error details (optional, for debugging)
+    # app.logger.error(f"Server Error: {e}")
+    return render_template("error.html",error=500), 500
+
 
 
 @bp.route("/logout")

@@ -23,3 +23,4 @@ class Prediction(db.Model):
     embarked =db.Column(db.String, nullable=False)
     prediction_result = db.Column(db.String(50), nullable=False)
     timestamp = db.Column(db.DateTime, default= datetime.now(timezone.utc))
+
