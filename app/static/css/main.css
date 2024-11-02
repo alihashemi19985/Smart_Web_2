@@ -1966,7 +1966,7 @@ section,
 # Starter Section Section
 --------------------------------------------------------------*/
 .login {
-  min-height: 80vh;
+	min-height: 80vh;
 }
 .login p {
 	font-size: 14px;
@@ -1979,7 +1979,7 @@ section,
 	height: 100%;
 	object-fit: cover;
 	z-index: 1;
-  margin-top: 100px;
+	margin-top: 100px;
 }
 
 .hero .login-bg::before {
@@ -2011,4 +2011,19 @@ section,
 }
 .result {
 	min-height: 80vh;
-  }
+}
+#pclass {
+	color: #6c757d; /* Make select text gray initially */
+}
+
+#pclass:not([value='']) {
+	color: #000;
+}
+
+
+/* Style for the select when it's in the placeholder state */
+
+/* When an option other than the placeholder is selected, change color to black */
+.error{
+	width: 100%;
+}

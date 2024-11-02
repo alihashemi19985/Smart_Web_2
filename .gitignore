@@ -3,6 +3,6 @@ mlops12_env/
 instance/site.db
 mlops_env/
 instance/
-__pycache__/*
-app/__pycache__/*
+__pycache__/
+app/__pycache__/
 app/model/__pycache__/

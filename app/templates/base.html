@@ -78,16 +78,35 @@
 					class="navmenu">
 					<ul>
 						<li>
-							<a
-								href="{{url_for('main.home')}}"
-								class="active"
-								>Home</a
-							>
+							<a href="{{ url_for('main.home') }}" 
+							   class="{{ 'active' if request.endpoint == 'main.home' else '' }}">
+								Home
+							</a>
 						</li>
-						<li><a href="{{ url_for('main.input_data') }}">Input</a></li>
-
-						<li><a href="{{ url_for('main.history') }}">History</a></li>
-						<li><a href="{{ url_for('main.home') }}#contact">Contact</a></li>
+						<li>
+							<a href="{{ url_for('main.home') }}#about" 
+							   class="{{ 'active' if request.endpoint == 'main.about' else '' }}">
+								About
+							</a>
+						</li>
+						<li>
+							<a href="{{ url_for('main.home') }}#features" 
+							   class="{{ 'active' if request.endpoint == 'main.features' else '' }}">
+								History
+							</a>
+						</li>
+						<li>
+							<a href="{{ url_for('main.home') }}#contact" 
+							   class="{{ 'active' if request.endpoint == 'main.contact' else '' }}">
+								Contact
+							</a>
+						</li>
+						<li>
+							<a href="{{ url_for('main.input_data') }}" 
+							   class="{{ 'active' if request.endpoint == 'main.input_data' else '' }}">
+								Input Form
+							</a>
+						</li>
 					</ul>
 					<i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
 				</nav>
@@ -103,8 +122,8 @@
 					>
 					<a
 						class="btn-getstarted"
-						href="{{ url_for('main.history') }}"
-						>History</a
+						href="{{ url_for('main.profile') }}"
+						>Profile</a
 					>
 				{% else %}
 					<!-- User is not logged in, show the login and register buttons -->
